@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import React from "react";
 
 const allocations = [
   { label: "Team", percentage: 28, color: "bg-blue-500" },
@@ -35,36 +36,44 @@ export function Tokenomics() {
           <div className="flex items-center justify-center">
             <div className="relative w-64 h-64 sm:w-80 sm:h-80">
               <svg viewBox="0 0 200 200" className="transform -rotate-90">
-                {allocations.reduce((acc, item, index) => {
-                  const startAngle = acc;
-                  const endAngle = startAngle + (item.percentage / 100) * 360;
-                  const startRad = (startAngle * Math.PI) / 180;
-                  const endRad = (endAngle * Math.PI) / 180;
-                  const x1 = 100 + 80 * Math.cos(startRad);
-                  const y1 = 100 + 80 * Math.sin(startRad);
-                  const x2 = 100 + 80 * Math.cos(endRad);
-                  const y2 = 100 + 80 * Math.sin(endRad);
-                  const largeArc = item.percentage > 50 ? 1 : 0;
-                  
-                  const path = `M 100 100 L ${x1} ${y1} A 80 80 0 ${largeArc} 1 ${x2} ${y2} Z`;
-                  
-                  const colorMap: Record<string, string> = {
-                    "bg-blue-500": "#3b82f6",
-                    "bg-green-500": "#22c55e",
-                    "bg-amber-500": "#f59e0b",
-                    "bg-purple-500": "#a855f7",
-                    "bg-orange-500": "#f97316",
-                    "bg-red-500": "#ef4444",
-                  };
-                  
-                  return (
-                    <path
-                      key={index}
-                      d={path}
-                      fill={colorMap[item.color] || "#f59e0b"}
-                    />
-                  );
-                }, 0)}
+                {allocations.reduce<{ angle: number; elements: React.ReactElement[] }>(
+                  (acc, item, index) => {
+                    const startAngle = acc.angle;
+                    const endAngle = startAngle + (item.percentage / 100) * 360;
+                    const startRad = (startAngle * Math.PI) / 180;
+                    const endRad = (endAngle * Math.PI) / 180;
+                    const x1 = 100 + 80 * Math.cos(startRad);
+                    const y1 = 100 + 80 * Math.sin(startRad);
+                    const x2 = 100 + 80 * Math.cos(endRad);
+                    const y2 = 100 + 80 * Math.sin(endRad);
+                    const largeArc = item.percentage > 50 ? 1 : 0;
+                    
+                    const path = `M 100 100 L ${x1} ${y1} A 80 80 0 ${largeArc} 1 ${x2} ${y2} Z`;
+                    
+                    const colorMap: Record<string, string> = {
+                      "bg-blue-500": "#3b82f6",
+                      "bg-green-500": "#22c55e",
+                      "bg-amber-500": "#f59e0b",
+                      "bg-purple-500": "#a855f7",
+                      "bg-orange-500": "#f97316",
+                      "bg-red-500": "#ef4444",
+                    };
+                    
+                    const element = (
+                      <path
+                        key={index}
+                        d={path}
+                        fill={colorMap[item.color] || "#f59e0b"}
+                      />
+                    );
+                    
+                    return {
+                      angle: endAngle,
+                      elements: [...acc.elements, element],
+                    };
+                  },
+                  { angle: 0, elements: [] }
+                ).elements}
               </svg>
             </div>
           </div>
