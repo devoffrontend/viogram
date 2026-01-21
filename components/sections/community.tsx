@@ -40,12 +40,12 @@ export function Community() {
             </h2>
             <div className="space-y-4">
               <p className="text-neutral-700 text-lg leading-relaxed">
-                Viogram is built with a ship-fast, secure-first mindset—delivering consistent 
+                Viogram is built with a ship-fast, secure-first mindset—delivering consistent
                 upgrades to performance, user experience, and blockchain functionality.
               </p>
               <p className="text-neutral-700 text-lg leading-relaxed">
-                This page provides full transparency into what we&apos;re building, what&apos;s launching 
-                next, and how the ecosystem is evolving—so holders, creators, and partners can 
+                This page provides full transparency into what we&apos;re building, what&apos;s launching
+                next, and how the ecosystem is evolving—so holders, creators, and partners can
                 track real progress in real time.
               </p>
               <p className="text-black text-lg font-semibold mt-6">
@@ -63,14 +63,14 @@ export function Community() {
               {/* Vertical line */}
               <div className="w-0.5 flex-1 bg-amber-500/80 -mt-0" />
             </div>
-            
+
             {/* Scrollable Cards Container */}
             <div className="flex-1 relative">
               <div className="h-full overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-amber-300 scrollbar-track-transparent">
                 <div className="space-y-4 pb-20">
                   {updates.map((update, index) => (
-                    <Card 
-                      key={index} 
+                    <Card
+                      key={index}
                       className="bg-white border-0 shadow-md hover:shadow-lg transition-shadow duration-300 rounded-xl overflow-hidden"
                     >
                       <CardContent className="p-5 pl-6">
@@ -85,7 +85,7 @@ export function Community() {
                               className="w-12 h-12"
                             />
                           </div>
-                          
+
                           {/* Content */}
                           <div className="pt-1">
                             <h3 className="text-lg font-bold mb-1 text-black">
@@ -103,7 +103,7 @@ export function Community() {
                   ))}
                 </div>
               </div>
-              
+
               {/* Fixed fade overlay at bottom */}
               <div className="absolute bottom-0 left-0 right-2 h-16 pointer-events-none bg-gradient-to-t from-[#F5F3EE] to-transparent" />
             </div>
