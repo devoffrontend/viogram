@@ -17,45 +17,53 @@ export function TokenOverview() {
                 VGT is the governance and utility token of the Viogram ecosystem.
               </p>
             </div>
-            <Card className="bg-gray-900/50 border-amber-500/40">
-              <CardContent className="p-6">
-                <div className="flex flex-wrap items-center gap-y-8 justify-center">
-                  <div className="flex items-center gap-3 flex-col w-[240px] md:border-r border-neutral-600 px-4">
-                    <span className="uppercase text-base font-bold text-amber-500">Chain</span>
-                    <Image
-                      src="/images/chain-solana.png"
-                      alt="Solana"
-                      width={140}
-                      height={20}
-                    />
-                  </div>
-                  <div className="flex items-center gap-3 flex-col w-[240px] md:border-r border-neutral-600 px-4">
-                    <span className="uppercase text-base font-bold text-amber-500">Max Supply</span>
-                    <span className="text-white text-lg font-bold">10,000,000,000 VGT</span>
-                  </div>
-                  <div className="flex items-center gap-3 flex-col w-[240px] md:border-r border-neutral-600 px-4">
-                    <span className="uppercase text-base font-bold text-amber-500">Design</span>
-                    <span className="text-white text-lg font-bold">Fixed, deflationary</span>
-                  </div>
-                  <div className="flex items-center gap-3 flex-col w-[240px] md:border-r border-neutral-600 px-4">
-                    <span className="uppercase text-base font-bold text-amber-500">Token</span>
-                    <span className="text-white text-lg font-bold">Viogram (VGT)</span>
-                  </div>
-                  <div className="flex items-center gap-3 flex-col w-[240px] px-4 md:border-r border-neutral-600">
-                    <span className="uppercase text-base font-bold text-amber-500">audited by</span>
-                    <div className="flex items-center gap-2 justify-center">
-                      <Image src="/images/audited-by-1.png" alt="Audited by" width={30} height={30} />
-                      <Image src="/images/audited-by-2.png" alt="Audited by" width={30} height={30} />
-                      <Image src="/images/audited-by-3.png" alt="Audited by" width={30} height={30} />
+            {/* Gradient border wrapper */}
+            <div 
+              className="p-[1px] rounded-xl"
+              style={{
+                background: 'linear-gradient(90deg, #363636 0%, #BB7E16 25%, #FFE0AA 50%, #BB7E16 75%, #363636 100%)'
+              }}
+            >
+              <Card className="bg-[#0D0D0D] border-0 rounded-xl overflow-x-auto">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between min-w-max">
+                    <div className="flex items-center gap-2 flex-col border-r border-neutral-600 px-6">
+                      <span className="uppercase text-sm font-bold text-amber-500">Chain</span>
+                      <Image
+                        src="/images/chain-solana.png"
+                        alt="Solana"
+                        width={100}
+                        height={20}
+                      />
+                    </div>
+                    <div className="flex items-center gap-2 flex-col border-r border-neutral-600 px-6">
+                      <span className="uppercase text-sm font-bold text-amber-500">Max Supply</span>
+                      <span className="text-white text-sm font-bold whitespace-nowrap">10,000,000,000 VGT</span>
+                    </div>
+                    <div className="flex items-center gap-2 flex-col border-r border-neutral-600 px-6">
+                      <span className="uppercase text-sm font-bold text-amber-500">Design</span>
+                      <span className="text-white text-sm font-bold whitespace-nowrap">Fixed, deflationary</span>
+                    </div>
+                    <div className="flex items-center gap-2 flex-col border-r border-neutral-600 px-6">
+                      <span className="uppercase text-sm font-bold text-amber-500">Token</span>
+                      <span className="text-white text-sm font-bold whitespace-nowrap">Viogram (VGT)</span>
+                    </div>
+                    <div className="flex items-center gap-2 flex-col border-r border-neutral-600 px-6">
+                      <span className="uppercase text-sm font-bold text-amber-500">Contract Address</span>
+                      <span className="text-white text-sm font-bold whitespace-nowrap">v4VWLfeAWhVfhAeFBpKebRsfX9NbFNf93duDq7vCVGT</span>
+                    </div>
+                    <div className="flex items-center gap-2 flex-col px-6">
+                      <span className="uppercase text-sm font-bold text-amber-500">Audited By</span>
+                      <div className="flex items-center gap-2 justify-center">
+                        <Image src="/images/audited-by-1.png" alt="Audited by" width={28} height={28} />
+                        <Image src="/images/audited-by-2.png" alt="Audited by" width={28} height={28} />
+                        <Image src="/images/audited-by-3.png" alt="Audited by" width={28} height={28} />
+                      </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 flex-col w-[240px] px-4">
-                    <span className="uppercase text-base font-bold text-amber-500">Contract Address</span>
-                    <span className="text-white text-lg font-bold break-all max-w-full text-center">v4VWLfeAWhVfhAeFBpKebRsfX9NbFNf93duDq7vCVGT</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
