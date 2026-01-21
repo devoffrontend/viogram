@@ -5,17 +5,26 @@ const updates = [
   {
     title: "Product releases",
     description: "Dashboard, Wallet, Marketplace, Rewards",
-    completed: true,
   },
   {
     title: "Proof of Engagement upgrades",
     description: "Verification, multipliers, anti-farm systems",
-    completed: true,
+  },
+  {
+    title: "Security improvements",
+    description: "Audits, patches, monitoring",
+  },
+  {
+    title: "Performance upgrades",
+    description: "Vaster sync, smoother UI, scalable infra",
   },
   {
     title: "Governance feature releases",
     description: "Voting, quorum updates, proposal history",
-    completed: false,
+  },
+  {
+    title: "Upcoming milestones and development schedule",
+    description: "",
   },
 ];
 
@@ -46,54 +55,57 @@ export function Community() {
           </div>
 
           {/* Right: Updates Timeline */}
-          <div className="relative flex">
+          <div className="relative flex h-[380px]">
             {/* Vertical timeline - outside the cards */}
-            <div className="relative flex flex-col items-center mr-6">
+            <div className="relative flex flex-col items-center mr-6 flex-shrink-0">
               {/* Top dot */}
               <div className="w-4 h-4 rounded-full bg-amber-500 flex-shrink-0 z-10" />
               {/* Vertical line */}
               <div className="w-0.5 flex-1 bg-amber-500/80 -mt-0" />
             </div>
             
-            {/* Cards */}
-            <div className="flex-1 space-y-4">
-              {updates.map((update, index) => (
-                <Card 
-                  key={index} 
-                  className={`bg-white border-0 shadow-md hover:shadow-lg transition-shadow duration-300 rounded-xl overflow-hidden ${
-                    !update.completed ? 'opacity-60' : ''
-                  }`}
-                >
-                  <CardContent className="p-5 pl-6">
-                    <div className="flex items-start gap-5">
-                      {/* Icon */}
-                      <div className="relative flex-shrink-0">
-                        <Image
-                          src="/images/news-tick.png"
-                          alt="Status"
-                          width={48}
-                          height={48}
-                          className={`w-12 h-12 ${!update.completed ? 'grayscale opacity-50' : ''}`}
-                        />
-                      </div>
-                      
-                      {/* Content */}
-                      <div className="pt-1">
-                        <h3 className={`text-lg font-bold mb-1 ${
-                          update.completed ? 'text-black' : 'text-gray-400'
-                        }`}>
-                          {update.title}
-                        </h3>
-                        <p className={`text-sm ${
-                          update.completed ? 'text-neutral-600' : 'text-gray-400'
-                        }`}>
-                          {update.description}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+            {/* Scrollable Cards Container */}
+            <div className="flex-1 relative">
+              <div className="h-full overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-amber-300 scrollbar-track-transparent">
+                <div className="space-y-4 pb-20">
+                  {updates.map((update, index) => (
+                    <Card 
+                      key={index} 
+                      className="bg-white border-0 shadow-md hover:shadow-lg transition-shadow duration-300 rounded-xl overflow-hidden"
+                    >
+                      <CardContent className="p-5 pl-6">
+                        <div className="flex items-start gap-5">
+                          {/* Icon */}
+                          <div className="relative flex-shrink-0">
+                            <Image
+                              src="/images/news-tick.png"
+                              alt="Status"
+                              width={48}
+                              height={48}
+                              className="w-12 h-12"
+                            />
+                          </div>
+                          
+                          {/* Content */}
+                          <div className="pt-1">
+                            <h3 className="text-lg font-bold mb-1 text-black">
+                              {update.title}
+                            </h3>
+                            {update.description && (
+                              <p className="text-sm text-neutral-600">
+                                {update.description}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Fixed fade overlay at bottom */}
+              <div className="absolute bottom-0 left-0 right-2 h-16 pointer-events-none bg-gradient-to-t from-[#F5F3EE] to-transparent" />
             </div>
           </div>
         </div>

@@ -123,3 +123,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom scrollbar for Community News section */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #d4a574 transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #d4a574;
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: #c49564;
+}
