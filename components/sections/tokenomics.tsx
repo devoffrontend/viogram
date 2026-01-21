@@ -1,99 +1,172 @@
-import { Card, CardContent } from "@/components/ui/card";
-import React from "react";
+"use client";
+
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from "@/components/ui/chart";
+import { Cell, Pie, PieChart } from "recharts";
+import { Card, CardContent } from "../ui/card";
 
 const allocations = [
-  { label: "Team", percentage: 28, color: "bg-blue-500" },
-  { label: "Marketing", percentage: 15, color: "bg-green-500" },
-  { label: "Public Sale", percentage: 10, color: "bg-amber-500" },
-  { label: "Private Sale", percentage: 12, color: "bg-purple-500" },
-  { label: "Ecosystem", percentage: 20, color: "bg-orange-500" },
-  { label: "Treasury", percentage: 15, color: "bg-red-500" },
+  { name: "Community & Ecosystem", value: 35, color: "#D4AF37" }, // brown/gold
+  { name: "Team & Advisors", value: 10, color: "#87CEEB" }, // light blue
+  { name: "Treasury & Liquidity", value: 10, color: "#FFFFFF" }, // white
+  { name: "Public Sale", value: 35, color: "#22C55E" }, // green
+  { name: "Private Investors", value: 10, color: "#1E3A8A" }, // dark blue/navy
 ];
+
+const chartConfig = {
+  "Community & Ecosystem": {
+    label: "Community & Ecosystem",
+    color: "#D4AF37",
+  },
+  "Team & Advisors": {
+    label: "Team & Advisors",
+    color: "#87CEEB",
+  },
+  "Treasury & Liquidity": {
+    label: "Treasury & Liquidity",
+    color: "#FFFFFF",
+  },
+  "Public Sale": {
+    label: "Public Sale",
+    color: "#22C55E",
+  },
+  "Private Investors": {
+    label: "Private Investors",
+    color: "#1E3A8A",
+  },
+} satisfies ChartConfig;
+
+interface LabelProps {
+  cx: number;
+  cy: number;
+  midAngle: number;
+  outerRadius: number;
+  percent: number;
+}
+
+const renderCustomLabel = ({
+  cx,
+  cy,
+  midAngle,
+  outerRadius,
+  percent,
+}: LabelProps) => {
+  const RADIAN = Math.PI / 180;
+  // Position label outside the pie chart - adjust based on outerRadius to be responsive
+  const radius = outerRadius + Math.min(outerRadius * 0.3, 30);
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+  return (
+    <text
+      x={x}
+      y={y}
+      fill="white"
+      textAnchor={x > cx ? "start" : "end"}
+      dominantBaseline="central"
+      className="text-xs sm:text-sm font-bold fill-white"
+      style={{ fill: "white", fontSize: "clamp(10px, 2vw, 14px)", fontWeight: "bold" }}
+    >
+      {`${(percent * 100).toFixed(0)}%`}
+    </text>
+  );
+};
 
 export function Tokenomics() {
   return (
-    <section className="py-20 lg:py-32 bg-gradient-to-b from-black to-gray-950">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-12 text-center">
+    <section
+      className="pt-20 lg:pt-32 bg-gradient-to-b from-black to-gray-950 relative bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: "url('/images/tokenomics-bg.png')",
+      }}
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <h2
+          className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-b from-white to-[#58544C]"
+        >
           Tokenomics (VGT)
         </h2>
-        
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          {/* Left: Allocation List */}
-          <div className="space-y-4">
-            {allocations.map((item, index) => (
-              <div key={index} className="flex items-center justify-between p-4 bg-gray-900/50 rounded-lg border border-amber-500/20">
-                <div className="flex items-center gap-4">
-                  <div className={`w-4 h-4 rounded ${item.color}`} />
-                  <span className="text-white font-semibold">{item.label}</span>
-                </div>
-                <span className="text-amber-400 font-bold text-lg">{item.percentage}%</span>
-              </div>
-            ))}
-          </div>
+      </div>
 
-          {/* Right: Pie Chart Placeholder */}
-          <div className="flex items-center justify-center">
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80">
-              <svg viewBox="0 0 200 200" className="transform -rotate-90">
-                {allocations.reduce<{ angle: number; elements: React.ReactElement[] }>(
-                  (acc, item, index) => {
-                    const startAngle = acc.angle;
-                    const endAngle = startAngle + (item.percentage / 100) * 360;
-                    const startRad = (startAngle * Math.PI) / 180;
-                    const endRad = (endAngle * Math.PI) / 180;
-                    const x1 = 100 + 80 * Math.cos(startRad);
-                    const y1 = 100 + 80 * Math.sin(startRad);
-                    const x2 = 100 + 80 * Math.cos(endRad);
-                    const y2 = 100 + 80 * Math.sin(endRad);
-                    const largeArc = item.percentage > 50 ? 1 : 0;
-                    
-                    const path = `M 100 100 L ${x1} ${y1} A 80 80 0 ${largeArc} 1 ${x2} ${y2} Z`;
-                    
-                    const colorMap: Record<string, string> = {
-                      "bg-blue-500": "#3b82f6",
-                      "bg-green-500": "#22c55e",
-                      "bg-amber-500": "#f59e0b",
-                      "bg-purple-500": "#a855f7",
-                      "bg-orange-500": "#f97316",
-                      "bg-red-500": "#ef4444",
-                    };
-                    
-                    const element = (
-                      <path
-                        key={index}
-                        d={path}
-                        fill={colorMap[item.color] || "#f59e0b"}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="bg-black border border-amber-500/40 p-10 rounded-lg">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold mb-10 bg-clip-text text-transparent bg-gradient-to-r from-white to-[#58544C]">
+                Supply allocation
+              </h3>
+              <div className="grid grid-cols-2 gap-6">
+                {allocations.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col gap-3"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="w-8 h-4 rounded-lg shrink-0"
+                        style={{ backgroundColor: item.color }}
                       />
-                    );
-                    
-                    return {
-                      angle: endAngle,
-                      elements: [...acc.elements, element],
-                    };
-                  },
-                  { angle: 0, elements: [] }
-                ).elements}
-              </svg>
+                      <span className="text-white text-sm">{item.value}%</span>
+                    </div>
+                    <span className="text-white text-sm">{item.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center w-full overflow-hidden">
+              <div className="w-full max-w-full [&_.recharts-pie-label-line]:stroke-white [&_.recharts-pie-label-line]:stroke-[1px]">
+                <ChartContainer config={chartConfig} className="h-[400px] sm:h-[450px] lg:h-[500px] w-full">
+                  <PieChart>
+                    <Pie
+                      data={allocations}
+                      dataKey="value"
+                      nameKey="name"
+                      cx="50%"
+                      cy="50%"
+                      outerRadius="70%"
+                      innerRadius={0}
+                      stroke="none"
+                      label={renderCustomLabel}
+                      labelLine={{
+                        stroke: "white",
+                        strokeWidth: 1,
+                      }}
+                    >
+                      {allocations.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Pie>
+                    <ChartTooltip
+                      content={<ChartTooltipContent hideLabel />}
+                    />
+                  </PieChart>
+                </ChartContainer>
+              </div>
             </div>
           </div>
+
+          <div className="w-full pt-10 border-t border-amber-500/40 grid grid-cols-2 gap-12 items-center">
+            <h3 className="text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-[#58544C]">
+              Treasury Buffer Protocol
+            </h3>
+            <Card className="bg-transparent border-none shadow-none">
+              <CardContent className="p-0">
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  A portion of revenue is allocated to a treasury to ensure stability and
+                  support the ecosystem. This buffer helps maintain token value and provides
+                  resources for future development and community initiatives.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
-        {/* Treasury Buffer Protocol */}
-        <div className="mt-16 max-w-4xl mx-auto">
-          <h3 className="text-3xl sm:text-4xl font-bold text-white mb-6 text-center">
-            Treasury Buffer Protocol
-          </h3>
-          <Card className="bg-gray-900/50 border-amber-500/20">
-            <CardContent className="p-8">
-              <p className="text-gray-300 text-lg leading-relaxed text-center">
-                A portion of revenue is allocated to a treasury to ensure stability and 
-                support the ecosystem. This buffer helps maintain token value and provides 
-                resources for future development and community initiatives.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+
       </div>
     </section>
   );

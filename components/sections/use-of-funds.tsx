@@ -16,20 +16,14 @@ export function UseOfFunds() {
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-12 text-center">
           Use of Funds
         </h2>
-        
-        <div className="max-w-4xl mx-auto space-y-4">
+
+        <div className="mx-auto space-y-4 grid grid-cols-2 gap-4">
           {fundAllocations.map((item, index) => (
-            <Card key={index} className="bg-gray-900/50 border-amber-500/20">
-              <CardContent className="p-6">
+            <Card key={index} className="bg-black border-transparent p-0 m-0 hover:border-amber-500/50 transition-colors">
+              <CardContent className="px-6 py-4">
                 <div className="flex items-center justify-between">
                   <span className="text-white font-semibold text-lg">{item.category}</span>
-                  <span className="text-amber-400 font-bold text-xl">{item.percentage}%</span>
-                </div>
-                <div className="mt-3 h-2 bg-gray-800 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-amber-500 to-amber-600 transition-all"
-                    style={{ width: `${item.percentage}%` }}
-                  />
+                  <span className="text-white font-bold text-xl">{item.percentage}%</span>
                 </div>
               </CardContent>
             </Card>
