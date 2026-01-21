@@ -1,8 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export function Hero() {
   const [timeLeft, setTimeLeft] = useState({
@@ -16,7 +17,7 @@ export function Hero() {
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         let { days, hours, minutes, seconds } = prev;
-        
+
         if (seconds > 0) {
           seconds--;
         } else if (minutes > 0) {
@@ -32,7 +33,7 @@ export function Hero() {
           minutes = 59;
           seconds = 59;
         }
-        
+
         return { days, hours, minutes, seconds };
       });
     }, 1000);
@@ -51,15 +52,15 @@ export function Hero() {
               <br />
               <span className="text-gray-400">TOKEN SALE</span>
             </h1>
-            
+
             <p className="text-xl sm:text-2xl lg:text-3xl text-white font-bold">
               Building the Participation Economy Infrastructure
             </p>
-            
+
             <p className="text-white text-base lg:text-lg leading-relaxed max-w-2xl">
               Viogram is a next-generation Social Growth & Participation Economy Infrastructure that transforms digital activity into measurable economic value. It unifies social interaction, commerce, fintech, and real-world assets into one scalable ecosystem.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 className="bg-gradient-to-r from-orange-500 to-orange-700 hover:from-orange-600 hover:to-orange-800 text-white border-0 rounded-full px-8 py-6 text-base lg:text-lg font-medium"
@@ -72,7 +73,7 @@ export function Hero() {
                 Read Whitepaper
               </Button>
             </div>
-            
+
             {/* Countdown */}
             <div className="pt-4 space-y-4">
               <p className="text-white text-xl lg:text-2xl font-semibold">
@@ -98,7 +99,7 @@ export function Hero() {
               </div>
             </div>
           </div>
-          
+
           {/* Right Image */}
           <div className="hidden lg:block relative w-full">
             <div className="relative rounded-lg overflow-hidden" style={{ width: 'calc(50vw - 2rem)', marginRight: 'calc(2rem - 50vw)' }}>
@@ -111,6 +112,38 @@ export function Hero() {
                 priority
               />
             </div>
+          </div>
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-4 px-6 py-6 border border-amber-500/40 rounded-lg mt-8 mb-16">
+          <h6 className="text-white text-lg font-semibold">Private Sale is Live Now!</h6>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Link href="#" className="inline-flex items-center justify-center w-[60px] h-[40px] border bg-neutral-600 border-neutral-500 rounded-sm">
+              <Image src="/images/etherium.png" alt="Etherium" width={24} height={24} />
+            </Link>
+            <Link href="#" className="inline-flex items-center justify-center w-[60px] h-[40px] border bg-neutral-600 border-neutral-500 rounded-sm">
+              <Image src="/images/tether.png" alt="Tether" width={24} height={24} />
+            </Link>
+            <Link href="#" className="inline-flex items-center justify-center w-[60px] h-[40px] border bg-neutral-600 border-neutral-500 rounded-sm">
+              <Image src="/images/binance.png" alt="Binance" width={24} height={24} />
+            </Link>
+            <Link href="#" className="inline-flex items-center justify-center w-[60px] h-[40px] border bg-neutral-600 border-neutral-500 rounded-sm">
+              <Image src="/images/solana.png" alt="Solana" width={24} height={24} />
+            </Link>
+            <Link href="#" className="inline-flex items-center justify-center w-[60px] h-[40px] border bg-neutral-600 border-neutral-500 rounded-sm">
+              <Image src="/images/bitcoin.png" alt="Bitcoin" width={24} height={24} />
+            </Link>
+            <Link href="#" className="inline-flex items-center justify-center w-[60px] h-[40px] border bg-neutral-600 border-neutral-500 rounded-sm">
+              <Image src="/images/visa.png" alt="Visa" width={38} height={12} />
+            </Link>
+            <Link href="#" className="inline-flex items-center justify-center w-[60px] h-[40px] border bg-neutral-600 border-neutral-500 rounded-sm">
+              <Image src="/images/master-card.png" alt="Mastercard" width={29} height={20} />
+            </Link>
+            <Link href="#" className="inline-flex items-center justify-center w-[60px] h-[40px] border bg-neutral-600 border-neutral-500 rounded-sm">
+              <Image src="/images/google-pay.png" alt="Google Pay" width={42} height={16} />
+            </Link>
+            <Link href="#" className="inline-flex items-center justify-center w-[60px] h-[40px] border bg-neutral-600 border-neutral-500 rounded-sm">
+              <Image src="/images/apple-pay.png" alt="Apple Pay" width={42} height={16} />
+            </Link>
           </div>
         </div>
       </div>

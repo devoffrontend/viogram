@@ -20,7 +20,7 @@ export function TokenOverview() {
             <Card className="bg-gray-900/50 border-amber-500/40">
               <CardContent className="p-6">
                 <div className="flex flex-wrap items-center gap-y-8 justify-center">
-                  <div className="flex items-center gap-3 flex-col w-[240px] border-r border-neutral-600 px-4">
+                  <div className="flex items-center gap-3 flex-col w-[240px] md:border-r border-neutral-600 px-4">
                     <span className="uppercase text-base font-bold text-amber-500">Chain</span>
                     <Image
                       src="/images/chain-solana.png"
@@ -29,19 +29,19 @@ export function TokenOverview() {
                       height={20}
                     />
                   </div>
-                  <div className="flex items-center gap-3 flex-col w-[240px] border-r border-neutral-600 px-4">
+                  <div className="flex items-center gap-3 flex-col w-[240px] md:border-r border-neutral-600 px-4">
                     <span className="uppercase text-base font-bold text-amber-500">Max Supply</span>
                     <span className="text-white text-lg font-bold">10,000,000,000 VGT</span>
                   </div>
-                  <div className="flex items-center gap-3 flex-col w-[240px] border-r border-neutral-600 px-4">
+                  <div className="flex items-center gap-3 flex-col w-[240px] md:border-r border-neutral-600 px-4">
                     <span className="uppercase text-base font-bold text-amber-500">Design</span>
                     <span className="text-white text-lg font-bold">Fixed, deflationary</span>
                   </div>
-                  <div className="flex items-center gap-3 flex-col w-[240px] border-r border-neutral-600 px-4">
+                  <div className="flex items-center gap-3 flex-col w-[240px] md:border-r border-neutral-600 px-4">
                     <span className="uppercase text-base font-bold text-amber-500">Token</span>
                     <span className="text-white text-lg font-bold">Viogram (VGT)</span>
                   </div>
-                  <div className="flex items-center gap-3 flex-col w-[240px] px-4 border-r border-neutral-600">
+                  <div className="flex items-center gap-3 flex-col w-[240px] px-4 md:border-r border-neutral-600">
                     <span className="uppercase text-base font-bold text-amber-500">audited by</span>
                     <div className="flex items-center gap-2 justify-center">
                       <Image src="/images/audited-by-1.png" alt="Audited by" width={30} height={30} />

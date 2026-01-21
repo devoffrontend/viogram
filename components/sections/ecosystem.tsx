@@ -3,32 +3,32 @@ import Image from "next/image";
 
 const ecosystemItems = [
   {
-    icon: "/images/vision.png",
+    icon: "/images/super-app.png",
     title: "Super App",
     description: "The comprehensive wallet and super app for all users.",
   },
   {
-    icon: "/images/vision.png",
+    icon: "/images/engagement.png",
     title: "Proof of Engagement",
     description: "A novel consensus mechanism that rewards active participation.",
   },
   {
-    icon: "/images/vision.png",
+    icon: "/images/labs-foundation.png",
     title: "Viogram Labs Foundation",
     description: "A non-profit organization supporting ecosystem growth.",
   },
   {
-    icon: "/images/vision.png",
+    icon: "/images/vio-bank.png",
     title: "VioBank",
     description: "For easy and secure digital payments, remittances, and asset storage.",
   },
   {
-    icon: "/images/vision.png",
+    icon: "/images/vio-grow.png",
     title: "VioGrow",
     description: "Treasury capital management for ecosystem stability.",
   },
   {
-    icon: "/images/vision.png",
+    icon: "/images/rwa-launchpad.png",
     title: "RWA Launchpad",
     description: "Real-World Asset tokenization and launch.",
   },
@@ -41,20 +41,20 @@ export function Ecosystem() {
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 mb-12 text-left">
           The Viogram Ecosystem
         </h2>
-        
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {ecosystemItems.map((item, index) => {
-            
+
             return (
               <Card key={index} className="bg-transparent p-0 border-neutral-200 hover:border-neutral-300 transition-colors">
                 <CardContent className="p-10">
                   <div className="flex flex-col items-start text-left">
-                      <Image
+                    <Image
                       src={item.icon}
                       alt={item.title}
                       width={72}
                       height={72}
-                      />
+                    />
                     <h3 className="text-xl font-bold text-neutral-900 text-left mt-4 mb-2">{item.title}</h3>
                     <p className="text-neutral-900 text-base text-left">{item.description}</p>
                   </div>

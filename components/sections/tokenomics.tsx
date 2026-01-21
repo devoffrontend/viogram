@@ -150,8 +150,8 @@ export function Tokenomics() {
             </div>
           </div>
 
-          <div className="w-full pt-10 border-t border-amber-500/40 grid grid-cols-2 gap-12 items-center">
-            <h3 className="text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-[#58544C]">
+          <div className="w-full pt-10 border-t border-amber-500/40 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <h3 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-[#58544C]">
               Treasury Buffer Protocol
             </h3>
             <Card className="bg-transparent border-none shadow-none">

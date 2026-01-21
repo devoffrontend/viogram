@@ -1,83 +1,118 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Check } from "lucide-react";
 
-const roadmapItems = [
+const roadmapPhases = [
   {
-    quarter: "Q1 2024",
-    title: "Platform launch, Private sale, Core features",
-    highlighted: true,
+    phase: 1,
+    dates: "Q1-Q2 2026",
+    items: [
+      "MVP launch, PoE v1",
+      "VGC rewards, VGT",
+      "deployment, token sale",
+    ],
+    isActive: true,
   },
   {
-    quarter: "Q2 2024",
-    title: "Public sale, VGT listing, Super App V1",
-    highlighted: false,
+    phase: 2,
+    dates: "Q3-Q4 2026",
+    items: [
+      "Marketplace, live",
+      "commerce, VioRadar, AI",
+      "fraud detection",
+    ],
+    isActive: false,
   },
   {
-    quarter: "Q3 2024 - Q4 2024",
-    title: "Proof of Engagement V1, VioBank integration",
-    highlighted: false,
+    phase: 3,
+    dates: "Q4 2026 - Q1 2027",
+    items: [
+      "VioBank rails, remittance",
+      "DAO governance, VG",
+      "Chain testnet",
+    ],
+    isActive: false,
   },
   {
-    quarter: "Q1 2025 - Q2 2025",
-    title: "RWA Launchpad V1, Global expansion",
-    highlighted: false,
+    phase: 4,
+    dates: "Q1-Q2 2027",
+    items: [
+      "VG Chain beta, RWA",
+      "launchpad, institutional",
+      "reporting",
+    ],
+    isActive: false,
   },
   {
-    quarter: "Q3 2025",
-    title: "Decentralized governance, Ecosystem grants",
-    highlighted: false,
+    phase: 5,
+    dates: "Q3 2027+",
+    items: [
+      "Full protocol, DID",
+      "developer ecosystem",
+      "global scale",
+    ],
+    isActive: false,
   },
 ];
 
 export function Roadmap() {
   return (
-    <section id="roadmap" className="py-20 lg:py-32 bg-gradient-to-b from-gray-950 to-black">
+    <section id="roadmap" className="py-20 lg:py-32 bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-12 text-center">
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-16 text-center">
           Roadmap
         </h2>
-        
+
         <div className="relative">
-          {/* Timeline line */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-amber-500/30 transform -translate-x-1/2" />
-          
-          <div className="space-y-8">
-            {roadmapItems.map((item, index) => (
-              <div
-                key={index}
-                className={`flex flex-col lg:flex-row items-center gap-6 ${
-                  index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                }`}
-              >
-                <div className="flex-1 max-w-md">
-                  <Card
-                    className={`${
-                      item.highlighted
-                        ? "bg-gradient-to-br from-amber-500/20 to-amber-600/20 border-amber-500/50"
-                        : "bg-gray-900/50 border-amber-500/20"
-                    }`}
-                  >
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-3">
-                        {item.highlighted && (
-                          <Check className="h-5 w-5 text-amber-400 mt-1 flex-shrink-0" />
-                        )}
-                        <div>
-                          <h3 className="text-lg font-bold text-amber-400 mb-2">
-                            {item.quarter}
-                          </h3>
-                          <p className="text-gray-300">{item.title}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+          {/* Timeline line - vertical on mobile/tablet, horizontal on desktop */}
+          <div className="absolute top-[15px] left-4 lg:left-0 bottom-[15px] lg:bottom-auto lg:top-[15px] lg:right-0 w-0.5 lg:w-auto lg:h-0.5 bg-gray-400" />
+
+          {/* Timeline nodes and phases */}
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-4 relative pl-4 lg:pl-0">
+            {roadmapPhases.map((phase, index) => (
+              <div key={index} className="flex flex-row lg:flex-col items-start lg:items-center relative -ml-4 lg:ml-0">
+                {/* Timeline node - centered on the line */}
+                <div className="relative z-10 mb-0 lg:mb-12 h-8 lg:h-8 flex items-center justify-center mr-6 lg:mr-0 shrink-0 w-8 lg:w-auto">
+                  {phase.isActive ? (
+                    <div className="w-8 h-8 inline-flex items-center justify-center bg-[#F4F1EB] rounded-full border-2 border-amber-600">
+                      <span className="w-4 h-4 bg-amber-600 rounded-full inline-flex items-center justify-center"></span>
+                    </div>
+                  ) : (
+                    <div className="w-8 h-8 inline-flex items-center justify-center bg-[#F4F1EB] rounded-full border-2 border-gray-300">
+                      <span className="w-2 h-2 bg-gray-300 rounded-full inline-flex items-center justify-center"></span>
+                    </div>
+                  )}
                 </div>
-                
-                {/* Timeline dot */}
-                <div className="hidden lg:block w-4 h-4 bg-amber-500 rounded-full border-4 border-black z-10" />
-                
-                {/* Spacer for alternating layout */}
-                <div className="flex-1 max-w-md hidden lg:block" />
+
+                {/* Phase card */}
+                <Card
+                  className={`w-full flex-1 lg:flex-none rounded-lg ${phase.isActive
+                    ? "bg-white border-gray-300"
+                    : "bg-[#ECE9E1] border-gray-300"
+                    }`}
+                >
+                  <CardContent className="p-4 text-center">
+                    <div
+                      className={`inline-block px-3 py-1 rounded-xl mb-3 text-sm font-bold ${phase.isActive
+                        ? "bg-amber-600 text-white"
+                        : "bg-black text-white"
+                        }`}
+                    >
+                      PHASE {phase.phase}
+                    </div>
+                    <div className="text-black font-semibold text-sm mb-3">
+                      {phase.dates}
+                    </div>
+                    <div className="space-y-1">
+                      {phase.items.map((item, itemIndex) => (
+                        <p
+                          key={itemIndex}
+                          className="text-black text-sm leading-tight"
+                        >
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             ))}
           </div>

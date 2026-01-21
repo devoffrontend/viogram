@@ -17,7 +17,7 @@ export function UseOfFunds() {
           Use of Funds
         </h2>
 
-        <div className="mx-auto space-y-4 grid grid-cols-2 gap-4">
+        <div className="mx-auto space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4">
           {fundAllocations.map((item, index) => (
             <Card key={index} className="bg-black border-transparent p-0 m-0 hover:border-amber-500/50 transition-colors">
               <CardContent className="px-6 py-4">
