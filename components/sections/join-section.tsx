@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 
 /**
  * JoinSection Component
@@ -19,7 +18,7 @@ import { ArrowRight } from "lucide-react";
 
 export function JoinSection() {
   return (
-    <section className="py-16 lg:py-24 bg-[#1E1E1E]">
+    <section className="py-16 lg:py-24 ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-br from-[#D97706] via-[#B45309] to-[#92400E] rounded-3xl p-8 lg:p-12 xl:p-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -35,8 +34,7 @@ export function JoinSection() {
                 <Button
                   className="bg-black hover:bg-black/90 text-white rounded-full px-8 py-6 text-base font-medium group"
                 >
-                  Participate in Token Sale
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  Participate in Token Sale →
                 </Button>
                 <Button
                   variant="outline"

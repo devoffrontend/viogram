@@ -28,13 +28,13 @@ export default function Home() {
       <TokenOverview />
       <Tokenomics />
       <UseOfFunds />
-      <div className="bg-[#F4F1EB]">
+      <div className="bg-[#F4F1EB] pb-[200px]">
         <Roadmap />
         <WhyParticipate />
         <Community />
       </div>
       <MediaPartners />
-      <div className="bg-[#1E1E1E]">
+      <div className="bg-black">
         <PoweredBy />
         <JoinSection />
         <Footer />
