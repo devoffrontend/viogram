@@ -88,7 +88,7 @@ export function Hero() {
                 >
                   <div className="bg-gradient-to-b from-[#FBB02BB2] to-black rounded-lg px-4 py-3 min-w-[90px] text-center">
                     <div className="text-3xl lg:text-4xl font-bold text-white">{timeLeft.days}</div>
-                    <div className="text-xs lg:text-sm text-gray-400 uppercase mt-1">DAYS</div>
+                    <div className="text-xs lg:text-sm text-white uppercase mt-1">DAYS</div>
                   </div>
                 </div>
                 <div
@@ -99,7 +99,7 @@ export function Hero() {
                 >
                   <div className="bg-gradient-to-b from-[#FBB02BB2] to-black rounded-lg px-4 py-3 min-w-[90px] text-center">
                     <div className="text-3xl lg:text-4xl font-bold text-white">{timeLeft.hours}</div>
-                    <div className="text-xs lg:text-sm text-gray-400 uppercase mt-1">HOURS</div>
+                    <div className="text-xs lg:text-sm text-white uppercase mt-1">HOURS</div>
                   </div>
                 </div>
                 <div
@@ -110,7 +110,7 @@ export function Hero() {
                 >
                   <div className="bg-gradient-to-b from-[#FBB02BB2] to-black rounded-lg px-4 py-3 min-w-[90px] text-center">
                     <div className="text-3xl lg:text-4xl font-bold text-white">{timeLeft.minutes}</div>
-                    <div className="text-xs lg:text-sm text-gray-400 uppercase mt-1">MINUTES</div>
+                    <div className="text-xs lg:text-sm text-white uppercase mt-1">MINUTES</div>
                   </div>
                 </div>
                 <div
@@ -121,7 +121,7 @@ export function Hero() {
                 >
                   <div className="bg-gradient-to-b from-[#FBB02BB2] to-black rounded-lg px-4 py-3 min-w-[90px] text-center">
                     <div className="text-3xl lg:text-4xl font-bold text-white">{timeLeft.seconds}</div>
-                    <div className="text-xs lg:text-sm text-gray-400 uppercase mt-1">SECONDS</div>
+                    <div className="text-xs lg:text-sm text-white uppercase mt-1">SECONDS</div>
                   </div>
                 </div>
               </div>
