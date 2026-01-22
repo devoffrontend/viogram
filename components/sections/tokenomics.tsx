@@ -131,6 +131,8 @@ export function Tokenomics() {
                       outerRadius="70%"
                       innerRadius={0}
                       stroke="none"
+                      paddingAngle={5}
+                      cornerRadius={8}
                       label={renderCustomLabel}
                       labelLine={{
                         stroke: "white",
@@ -138,7 +140,10 @@ export function Tokenomics() {
                       }}
                     >
                       {allocations.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={entry.color}
+                        />
                       ))}
                     </Pie>
                     <ChartTooltip

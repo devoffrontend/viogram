@@ -18,7 +18,7 @@ export function TokenOverview() {
               </p>
             </div>
             {/* Gradient border wrapper */}
-            <div 
+            <div
               className="p-[1px] rounded-xl"
               style={{
                 background: 'linear-gradient(90deg, #363636 0%, #BB7E16 25%, #FFE0AA 50%, #BB7E16 75%, #363636 100%)'
